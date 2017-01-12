@@ -10,6 +10,7 @@ var $winnerCircle = $('#winner-circle')
 var gameOver = false;
 
 
+
 for (var i = 1; i <= 10; i++) {
     tiles[i] = $('#tile' + i);
 }
@@ -71,7 +72,23 @@ function onGameOver($winner) {
         // 'right': tilePos.right + 32,
     }).addClass('winner-style');
     setTimeout(function() {
-      alert('Winner!');
+        alert('Winner!');
+        alert('Wouls you like to play again?');
+        reset();
     }, 400);
-    console.log($winner);
+
+};
+
+function reset() {
+  gameOver = false;
+  trumpPos = 0;
+  hillaryPos = 0;
+  $hillary.css({
+    left: '10px',
+    top: '160px'
+  }).removeClass('winner-style');
+  $trump.css({
+    left: '10px',
+    top: '250px'
+  }).removeClass('winner-style');
 };
