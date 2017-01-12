@@ -1,0 +1,113 @@
+body {
+    background-image: url('../img/background.png');
+    background-size: cover;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.title, .subtitle {
+    text-align: center;
+    margin: 0;
+    padding-top: 10px;
+}
+
+.player1,
+.player2,
+.tile {
+  width: 50px;
+  height: 50px;
+}
+
+.player1, .player2 {
+    box-shadow: 0 2px 5px 0 #000;
+    transition: all 0.4s;
+    left: 10px;
+}
+
+.player1 {
+    position: absolute;
+    background-image: url('../img/hillary.png');
+    background-size: cover;
+    top: 160px;
+}
+
+.player1::before {
+    position: relative;
+    content: 'P 1';
+    top: -15px;
+    left: 25%;
+    color: black;
+}
+
+.player2 {
+    position: absolute;
+    top: 250px;
+    background-image: url('../img/trump.png');
+    background-size: cover;
+}
+
+.player2::before {
+    position: relative;
+    content: 'P 2';
+    top: -15px;
+    left: 25%;
+    color: black;
+}
+
+.die-container {
+    max-width: 280px;
+    position: relative;
+    margin: auto;
+    margin-top: 40px;
+}
+
+.die {
+    margin: 0 auto;
+    display: block;
+    width: 50%;
+    cursor: pointer;
+}
+
+.die-container h1 {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-70%);
+    margin: 0;
+    cursor: pointer;
+}
+
+.board-container {
+    text-align: center;
+    margin-top: 80px;
+    padding: 10px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.tile {
+    box-sizing: border-box;
+    display: block;
+    background-image: url('../img/tile.jpg');
+    background-size: cover;
+    border: 2px solid #333;
+    width: 50px;
+    height: 50px;
+    content: '';
+    margin: 5px;
+}
+
+
+.winner-circle {
+  border-radius: 100%;
+  width: 100px;
+  height: 100px;
+}
+
+.winner-style {
+  border-radius: 100%;
+  width: 100px;
+  height: 100px;
+}
