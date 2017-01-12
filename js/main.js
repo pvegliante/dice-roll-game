@@ -73,7 +73,7 @@ function onGameOver($winner) {
     }).addClass('winner-style');
     setTimeout(function() {
         alert('Winner!');
-        alert('Wouls you like to play again?');
+        alert('Would you like to play again?');
         reset();
     }, 400);
 
