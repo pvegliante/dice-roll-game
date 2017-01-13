@@ -24,43 +24,47 @@ if (Math.random() > 0.5) {
 
 $dieAndNum.click(function() {
     if (gameOver === true) return false;
+      $die.attr('src', './img/Dodecahedron3.gif');
+      $roll.html('?');
+      var num = Math.floor(Math.random() * 10 + 1);
 
-    $die.attr('src', './img/Dodecahedron3.gif');
+    setTimeout(function() {
+        $roll.html(num);
+        movePlayer(num);
+    }, 900);
 
 
-    var num = Math.floor(Math.random() * 10 + 1);
-
-    $roll.html(num);
-
-    var $playerToMove;
-    var playerTile;
-    if (turn === 'player1') {
-        $playerToMove = $hillary;
-        turn = 'player2';
-        hillaryPos += num;
-        playerTile = hillaryPos;
-    } else {
-        $playerToMove = $trump;
-        turn = 'player1';
-        trumpPos += num;
-        playerTile = trumpPos;
-    }
-
-    if (trumpPos > 10 || hillaryPos > 10) {
-        onGameOver($playerToMove);
-        return false;
-    }
-
-    var tilePos = tiles[playerTile][0].getBoundingClientRect();
-
-    $playerToMove.css({
-        'top': tilePos.top,
-        'bottom': tilePos.bottom,
-        'left': tilePos.left,
-        'right': tilePos.right,
-    });
 });
 
+function movePlayer(num) {
+  var $playerToMove;
+  var playerTile;
+  if (turn === 'player1') {
+      $playerToMove = $hillary;
+      turn = 'player2';
+      hillaryPos += num;
+      playerTile = hillaryPos;
+  } else {
+      $playerToMove = $trump;
+      turn = 'player1';
+      trumpPos += num;
+      playerTile = trumpPos;
+  }
+
+  if (trumpPos > 10 || hillaryPos > 10) {
+      onGameOver($playerToMove);
+      return false;
+  }
+
+  var tilePos = tiles[playerTile][0].getBoundingClientRect();
+
+  $playerToMove.css({
+      'top': tilePos.top,
+      'bottom': tilePos.bottom,
+      'left': tilePos.left,
+      'right': tilePos.right,
+  });
+};
 
 function onGameOver($winner) {
     gameOver = true;
@@ -77,18 +81,18 @@ function onGameOver($winner) {
         reset();
     }, 400);
 
-};
+}
 
 function reset() {
-  gameOver = false;
-  trumpPos = 0;
-  hillaryPos = 0;
-  $hillary.css({
-    left: '10px',
-    top: '160px'
-  }).removeClass('winner-style');
-  $trump.css({
-    left: '10px',
-    top: '250px'
-  }).removeClass('winner-style');
-};
+    gameOver = false;
+    trumpPos = 0;
+    hillaryPos = 0;
+    $hillary.css({
+        left: '10px',
+        top: '160px'
+    }).removeClass('winner-style');
+    $trump.css({
+        left: '10px',
+        top: '250px'
+    }).removeClass('winner-style');
+}
